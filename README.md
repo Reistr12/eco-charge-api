@@ -125,6 +125,28 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
+## TypeORM Migrations
+
+As migrations ficam em `src/infra/typeorm/migrations`.
+
+Comandos principais:
+
+```bash
+# cria arquivo vazio de migration
+yarn migration:create src/infra/typeorm/migrations/AddInitialColumns
+
+# gera migration automaticamente a partir das entidades
+yarn migration:generate src/infra/typeorm/migrations/AddInitialColumns
+
+# aplica migrations pendentes
+yarn migration:run
+
+# desfaz a ultima migration aplicada
+yarn migration:revert
+```
+
+Observacao: para rodar o CLI localmente fora do container, use `DB_HOST_MIGRATION=localhost` no `.env`.
+
 ## Deployment
 
 When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.

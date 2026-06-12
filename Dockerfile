@@ -19,7 +19,10 @@ RUN yarn install --frozen-lockfile --production
 
 COPY --from=builder /app/dist ./dist
 COPY .env ./.env
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 3000
 
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["node", "dist/main"]
