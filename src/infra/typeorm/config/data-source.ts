@@ -9,10 +9,13 @@ const isTsRuntime = __filename.endsWith('.ts');
 const migrationsPath = isTsRuntime
   ? join(__dirname, '..', 'migrations', '*.ts')
   : join(__dirname, '..', 'migrations', '*.js');
+const host = isTsRuntime
+  ? process.env.DB_HOST_MIGRATION ?? process.env.DB_HOST ?? 'localhost'
+  : process.env.DB_HOST ?? 'localhost';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
-  host: process.env.DB_HOST ?? 'localhost',
+  host,
   port: Number(process.env.DB_PORT ?? 5432),
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,

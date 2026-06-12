@@ -10,6 +10,8 @@ const REQUIRED_ENV_KEYS: Array<keyof Env> = [
   'DB_NAME',
   'REDIS_HOST',
   'REDIS_PORT',
+  'JWT_SECRET',
+  'JWT_EXPIRES_IN',
 ];
 
 export const validateEnv = (config: Record<string, unknown>): Env => {
@@ -64,5 +66,7 @@ export const validateEnv = (config: Record<string, unknown>): Env => {
     DB_NAME: String(config.DB_NAME),
     REDIS_HOST: String(config.REDIS_HOST),
     REDIS_PORT: String(config.REDIS_PORT),
+    JWT_SECRET: String(config.JWT_SECRET),
+    JWT_EXPIRES_IN: String(config.JWT_EXPIRES_IN),
   };
 };

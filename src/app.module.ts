@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { validateEnv } from './config/env.validation';
+import { AuthModule } from './modules/auth.module';
+import { UsersModule } from './modules/users.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { validateEnv } from './config/env.validation';
         synchronize: false,
       }),
     }),
+    UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
