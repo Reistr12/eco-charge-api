@@ -8,4 +8,6 @@ export type Env = {
     DB_NAME: string;
     REDIS_HOST: string;
     REDIS_PORT: string;
+    JWT_SECRET: string;
+    JWT_EXPIRES_IN: string;
 };
