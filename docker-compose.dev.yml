@@ -1,0 +1,13 @@
+services:
+  api:
+    image: eco-charge-api:dev
+    build:
+      target: builder
+    command: yarn start:dev
+    environment:
+      NODE_ENV: development
+      CHOKIDAR_USEPOLLING: 'true'
+      CHOKIDAR_INTERVAL: '1000'
+    volumes:
+      - .:/app
+      - /app/node_modules
